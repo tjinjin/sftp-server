@@ -12,4 +12,9 @@ Vagrant.configure(2) do |config|
     a.vm.network "private_network", ip:"192.168.50.10"
     a.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
   end
+  config.vm.define 'test' do |a|
+    a.vm.box = "chef/centos-7.0"
+    a.vm.network "private_network", ip:"192.168.50.11"
+    a.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
+  end
 end
