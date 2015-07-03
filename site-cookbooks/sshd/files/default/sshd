@@ -3,6 +3,9 @@ auth	   required	pam_sepermit.so
 auth       substack     password-auth
 auth       include      postlogin
 account    required     pam_nologin.so
+# enabled accessfile for sftp
+account required pam_access.so accessfile=/etc/security/sshd_access.conf
+
 account    include      password-auth
 password   include      password-auth
 # pam_selinux.so close should be the first session rule
@@ -14,5 +17,3 @@ session    optional     pam_keyinit.so force revoke
 session    include      password-auth
 session    include      postlogin
 
-# enabled accessfile for sftp
-account required pam_access.so accessfile=/etc/security/sshd_access.conf
